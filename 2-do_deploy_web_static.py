@@ -18,7 +18,6 @@ def do_deploy(archive_path):
     d_folder = put(archive_path, '/tmp/')
     if d_folder.failed:
         ret_value = False
-    #returns false if archive path doesn't exist
     archive_file = archive_path.replace(".tgz", "").replace("versions/", "")
     d_dest = run('mkdir -p /data/web_static/releases/' + archive_file + '/')
     if d_dest.failed:
@@ -27,11 +26,9 @@ def do_deploy(archive_path):
                    ' -C /data/web_static/releases/' + archive_file + '/')
     if d_unpack.failed:
         ret_value = False
-        #uncompresses the archive
     d_cleanfile = run('rm /tmp/' + archive_file + '.tgz')
     if d_cleanfile.failed:
         ret_value = False
-        #
     d_move = run('mv /data/web_static/releases/' + archive_file +
                  '/web_static/* /data/web_static/releases/' + archive_file +
                  '/')
