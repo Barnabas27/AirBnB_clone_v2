@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Fabric script deploy all the app
-"""
+#Fabric script deploy all the app
+
 
 from fabric.api import *
 from os import path
