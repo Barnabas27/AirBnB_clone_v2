@@ -1,11 +1,26 @@
 #!/usr/bin/python3
-# deploy with fabric of static files of aribnb
+"""Fabric script deploy all the app
+"""
 
 from fabric.api import *
 from os import path
+from datetime import datetime
 
+n = datetime.now()
 
 env.hosts = ['3.236.4.92', '3.239.83.251']
+
+
+def do_pack():
+    """Packs the version"""
+
+    fn = 'versions/web_static_{}{}{}{}{}{}.tgz'\
+        .format(n.year, n.month, n.day, n.hour, n.minute, n.second)
+    local('mkdir -p versions')
+    command = local("tar -cvzf " + fn + " ./web_static/")
+    if command.succeeded:
+        return fn
+    return None
 
 
 def do_deploy(archive_path):
@@ -47,3 +62,13 @@ def do_deploy(archive_path):
     if ret_value:
         print("All tasks succeeded!")
     return ret_value
+
+
+def deploy():
+    """deploy all
+    """
+    #calling do_pack() and storing the path to archive
+    archive_path = do_pack()
+    if archive_path is None:
+        return False
+    return do_deploy(archive_path)
