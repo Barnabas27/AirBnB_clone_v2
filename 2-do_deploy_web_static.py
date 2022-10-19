@@ -50,4 +50,4 @@ def do_deploy(archive_path):
         ret_value = False
     if ret_value:
         print("All tasks succeeded!")
-    return 
+    return ret_value
