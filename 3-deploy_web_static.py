@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 #Fabric script deploy all the app
 
-
 from fabric.api import *
 from os import path
 from datetime import datetime
 
 
 n = datetime.now()
+
 
 env.hosts = ['3.236.4.92', '3.239.83.251']
 
@@ -73,4 +73,3 @@ def deploy():
     if archive_path is None:
         return False
     return do_deploy(archive_path)
-    
