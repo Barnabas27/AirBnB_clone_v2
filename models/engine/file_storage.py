@@ -71,7 +71,7 @@ class FileStorage:
         self.reload()
 
     def delete(self, obj=None):
-        """elete obj from __objects if it’s inside"""
+        """delete obj from __objects if it’s inside"""
         if obj:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             if key in self.__objects:
