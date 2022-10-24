@@ -15,7 +15,7 @@ from ast import literal_eval
 
 
 class HBNBCommand(cmd.Cmd):
-    """this class is entry poit of the command interpreter
+    """this class is entry point of the command interpreter
     """
     prompt = "(hbnb) "
     all_classes = {"BaseModel", "User", "State", "City",
