@@ -5,6 +5,8 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 
+
+
 class City(BaseModel, Base):
     """This is the class for City
     Attributes:

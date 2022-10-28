@@ -1,2 +1,5 @@
 main_delete.py
 main_place_amenities.py
+main.py
+*.json
+*.pyc
