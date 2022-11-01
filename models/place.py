@@ -8,17 +8,10 @@ import os
 
 
 place_amenity = Table('place_amenity', Base.metadata,
-                      Column('place_id',
-                             String(60),
-                             ForeignKey('places.id'),
-                             primary_key=True,
-                             nullable=False),
-                      Column('amenity_id',
-                             String(60),
-                             ForeignKey('amenities.id'),
-                             primary_key=True,
-                             nullable=False))
-
+                          Column('place_id', ForeignKey('places.id')),
+                          Column('amenity_id', ForeignKey('amenities.id')),
+                          mysql_charset="latin1"
+                          )
 
 class Place(BaseModel, Base):
     """This is the class for Place
@@ -36,6 +29,7 @@ class Place(BaseModel, Base):
         amenity_ids: list of Amenity ids
     """
     __tablename__ = 'places'
+    
 
     city_id = Column(String(60),
                      ForeignKey('cities.id'),
@@ -77,6 +71,9 @@ class Place(BaseModel, Base):
                            backref="place",
                            cascade="all, delete-orphan")
     am_id = []
+    __table_args__ = (
+        {'mysql_default_charset': 'latin1'}
+        )
 
     if os.getenv('HBNB_TYPE_STORAGE') == 'file':
         @property

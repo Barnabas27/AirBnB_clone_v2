@@ -16,6 +16,12 @@ class State(BaseModel, Base):
     """
     __tablename__ = 'states'
 
+    __table_args__ = (
+        {'mysql_default_charset': 'latin1'}
+        )
+
+    
+
     name = Column(String(128),
                   nullable=False)
 

@@ -34,3 +34,7 @@ class User(BaseModel, Base):
     reviews = relationship("Review",
                            backref="user",
                            cascade="all, delete-orphan")
+
+    __table_args__ = (
+        {'mysql_default_charset': 'latin1'}
+        )

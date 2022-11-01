@@ -15,6 +15,8 @@ class City(BaseModel, Base):
     """
     __tablename__ = 'cities'
 
+   
+
     name = Column(String(128),
                   nullable=False)
 
@@ -25,3 +27,7 @@ class City(BaseModel, Base):
     places = relationship("Place",
                           backref="cities",
                           cascade="all, delete-orphan")
+
+    __table_args__ = (
+        {'mysql_default_charset': 'latin1'}
+        )
